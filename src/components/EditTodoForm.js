@@ -39,10 +39,13 @@ class EditTodoForm extends Component {
             title: '',
             content: ''
         })
+
+        this.props.history.push('/')
     }
 
 
     render() {
+
 
         return (
             <div>

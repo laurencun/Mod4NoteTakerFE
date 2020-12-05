@@ -61,7 +61,6 @@ export const markComplete = (todo) => dispatch => {
 }
 
 export const updateTodo = (todo) => dispatch => {
-    console.log('updateTodo action')
 
     fetch(`http://localhost:3000/todos/${todo.id}`, {
         method: 'PATCH',

@@ -28,6 +28,8 @@ class TodoForm extends Component {
             content: ''
         })
         this.props.createTodo(todo)
+
+        this.props.history.push('/')
     }
 
 

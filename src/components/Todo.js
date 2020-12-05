@@ -1,17 +1,25 @@
 import React from 'react'
 import {connect} from 'react-redux'
 // import {Link} from 'react-router-dom'
-import {editTodo} from '/Users/lauren/Flatiron/note-taker-fe/src/actions/todoToEditAction.js'
+import {editTodo} from '../actions/todoToEditAction.js'
 import {deleteTodo, markComplete} from '../actions/todoActions'
+import {useHistory} from 'react-router'
 
 const Todo = ({todo, deleteTodo, editTodo, markComplete}) => {
-    
+
+    const history = useHistory()
+
     const handleDelete = () => {
         deleteTodo(todo.id)
     }
 
     const handleComplete = () => {
         markComplete(todo)
+    }
+
+    const handleEdit = (todo) => {
+        history.push(`/edit/${todo.id}`)
+        editTodo(todo)
     }
 
     return (
@@ -27,7 +35,7 @@ const Todo = ({todo, deleteTodo, editTodo, markComplete}) => {
                     {todo.completed === false ?
                 <div>
                 <button onClick={handleComplete}>Mark As Complete</button>
-                <button onClick={() => editTodo(todo)}>Edit</button>
+                <button onClick={() => handleEdit(todo)}>Edit</button>
                 </div>
                 :null}
                 <button onClick={handleDelete}>Delete</button>

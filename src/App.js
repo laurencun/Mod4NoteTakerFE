@@ -34,7 +34,7 @@ class App extends Component {
         <Route exact path='/login' component={Login}/>
         {/* <Route path='/:id' component={Todo} /> */}
         <Route exact path='/new' component={TodoForm} />
-        <Route path='/' component={EditTodoForm} />
+        <Route path='/edit/:id' component={EditTodoForm} />
         <Route exact path='/' component={MainContainer}/>
       </Router>
     </div>

@@ -14,7 +14,7 @@ class MainContainer extends Component {
 
         return (
             <div>
-                <TodoIndex key={this.props.todos.id} todos={this.props.todos} handleEdit={this.handleEdit}/>
+                <TodoIndex todos={this.props.todos} handleEdit={this.handleEdit}/>
             </div>
         )
     

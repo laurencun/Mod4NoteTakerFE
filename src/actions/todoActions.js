@@ -1,11 +1,11 @@
 const BASE_URL = 'http://localhost:3000'
 const TODOS_URL = `${BASE_URL}/todos`
 const FETCH_TODOS = 'FETCH_TODOS'
+const FETCH_COMPLETED = 'FETCH_COMPLETED'
 const NEW_TODO = 'NEW_TODO'
 const DELETE_TODO = 'DELETE_TODO'
 const COMPLETE_TODO = 'COMPLETE_TODO'
 const UPDATED_TODO = 'UPDATED_TODO'
-
 
 export const fetchTodos = () => dispatch =>  {
         fetch(TODOS_URL)
@@ -16,6 +16,17 @@ export const fetchTodos = () => dispatch =>  {
             todos
         })
     )
+}
+
+export const fetchCompleted = () => dispatch =>  {
+    fetch(TODOS_URL)
+    .then(res => res.json())
+    .then(todos =>
+        dispatch({
+        type: FETCH_COMPLETED,
+        todos: todos.filter(t => t.completed === true)
+    })
+)
 }
 
 export const createTodo = (todo) => dispatch =>  {

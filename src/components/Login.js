@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Button } from '@material-ui/core';
+
 
 export default class Login extends Component {
     render() {
@@ -15,7 +17,7 @@ export default class Login extends Component {
                 <h2>Welcome</h2>
                 <form>
                     <input style={formStyle} name='username' type='text' placeholder="Enter Username"/>
-                    <button onClick={login} style={formStyle}>Login</button>
+                    <Button style={{margin:10}} variant="outlined" size='small' onClick={login}>Login</Button>
                 </form>
             </div>
         )

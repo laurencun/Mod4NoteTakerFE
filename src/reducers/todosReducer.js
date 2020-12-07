@@ -3,9 +3,12 @@ export default function todosReducer(state= [], action) {
   switch (action.type) {
       case "FETCH_TODOS":
         return action.todos
+      case "FETCH_COMPLETED":
+        return action.todos
       case "NEW_TODO":
         return [...state, action.todo]
       case "DELETE_TODO":
+        console.log(action.todo.id)
         updatedTodos = state.filter(t => t.id !== action.todo.id)
         return updatedTodos
       case "COMPLETE_TODO":

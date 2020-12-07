@@ -5,62 +5,72 @@ import {getTodo} from '../actions/todoToShowAction'
 import {editTodo} from '../actions/todoToEditAction.js'
 import {deleteTodo, markComplete} from '../actions/todoActions'
 
+
 class ShowTodo extends Component {
 
-
     componentDidMount() {
-        getTodo(window.location.href.split('/')[3])
-    }
+        const todoId = (window.location.href.split('/')[4]) 
+        fetch(`http://localhost:3000/todos/${todoId}`)
+        .then(res => res.json())
+        .then(todo => 
+            this.props.getTodo(todo)
+        )
+     }
 
     render() {
 
-        const todoToShow = {
-            id: 1,
-            title: 'first todo title',
-            content: 'todo content',
-            completed: false
-        }
+        // const todoToShow = {
+        //     id: 1,
+        //     title: 'first todo title',
+        //     content: 'todo content',
+        //     completed: false
+        // }
 
         const handleDelete = () => {
-            deleteTodo(todoToShow.id)
+            deleteTodo(this.props.todoToShow.id)
         }
     
         const handleComplete = () => {
-            markComplete(todoToShow)
+            markComplete(this.props.todoToShow)
         }
     
         const handleEdit = (todo) => {
-            window.history.push(`/edit/${todoToShow.id}`)
-            editTodo(todoToShow)
+            window.history.push(`/edit/${this.props.todoToShow.id}`)
+            editTodo(this.props.todoToShow)
         }
 
     return (
-        <div>
+
+         <div>
             <div>
                 <h3>'hi'</h3>
-                
-                <p style={{textDecoration: todoToShow.completed ? 
-                'line-through' : 'none'}}>{todoToShow.content}</p>
 
-                {todoToShow.title ?
+                
+                {/* <p style={{textDecoration: this.props.todoToShow.completed ? 
+                'line-through' : 'none'}}>{this.props.todoToShow.content}</p>
+
+                {this.props.todoToShow.title ?
                 <div>
-                    {todoToShow.completed === false ?
+                    {this.props.todoToShow.completed === false ?
                 <div>
                 <button onClick={handleComplete}>Mark As Complete</button>
-                <button onClick={() => handleEdit(todoToShow)}>Edit</button>
+                <button onClick={() => handleEdit(this.props.todoToShow)}>Edit</button>
                 </div>
                 :null}
                 <button onClick={handleDelete}>Delete</button>
                 </div>
-                : null}
+                : null} */}
+                
+                
             </div>
         </div>
     )
+    }
 }
-}
+
 
 const mapStateToProps = state => ({
     todoToShow: state.todoToShow
 })
 
-export default connect(mapStateToProps, {deleteTodo, editTodo, markComplete})(ShowTodo)
+export default connect(mapStateToProps, {getTodo, deleteTodo, editTodo, markComplete})(ShowTodo)

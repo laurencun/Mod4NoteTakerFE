@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {createTodo} from '../actions/todoActions'
 import Add from '@material-ui/icons/Add'
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 class TodoForm extends Component {
 
@@ -25,7 +23,7 @@ class TodoForm extends Component {
             title: this.state.title,
             content: this.state.content,
             completed: false,
-            user_id: 1
+            user_id: null
         }
         this.setState({
             title: '',
@@ -40,22 +38,17 @@ class TodoForm extends Component {
     render() {
 
         return (
-            <div>
-            <React.Fragment>
-            <CssBaseline />
-            <Container maxWidth="sm">
-              <Typography component="div" style={{ backgroundColor: '#E0AB78', border: "1px solid black", height: '90vh' }} >
-                <form onSubmit={this.handleSubmit} style={{padding:200, align: 'center'}}>
+            <div style={{margin: '10vh'}}>
+            <Box component="form" style={{backgroundColor: '#E0AB78', border: "1px solid black"}}>
+                <form style={{padding:50, align: 'center'}}>
                 <h2>Add Note</h2>
                     <label>Title</label><br/>
                     <input onChange={this.handleChange} type="text" name="title" value={this.state.title}/><br/><br/>
                     <label>Content</label><br/>
                     <input onChange={this.handleChange} type="textarea" name="content" value={this.state.content}/><br/>
-                    <br/><button><Add /></button>
+                    <br/><button onClick={this.handleSubmit}><Add /></button>
                 </form>
-                </Typography>
-            </Container>
-          </React.Fragment>
+            </Box>
             </div>
         )
     }

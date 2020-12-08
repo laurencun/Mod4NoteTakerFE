@@ -46,7 +46,6 @@ export const createTodo = (todo) => dispatch =>  {
 }
 
 export const deleteTodo = (id) => dispatch => {
-    console.log('action')
     fetch(`http://localhost:3000/todos/${id}`, {method: 'DELETE'})
     .then(res => res.json())
     .then((todo) =>  dispatch({

@@ -4,10 +4,10 @@ export default function todosReducer(state= [], action) {
       case "FETCH_TODOS":
         return action.todos
       case "FETCH_COMPLETED":
-        console.log(action.todos)
         return action.todos
       case "NEW_TODO":
-        return [...state, action.todo]
+        console.log(action.newTodo)
+        return [...state, action.newTodo]
       case "DELETE_TODO":
         updatedTodos = state.filter(t => t.id !== action.todo.id)
         return updatedTodos

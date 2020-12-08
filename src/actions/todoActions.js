@@ -31,17 +31,25 @@ export const fetchCompleted = () => dispatch =>  {
 }
 
 export const createTodo = (todo) => dispatch =>  {
+
+    const newTodo = {
+        title: todo.title,
+        content: todo.content,
+        completed: false,
+        starred: false
+    }
+
     fetch(TODOS_URL,{
         method: 'POST',
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify(todo)
+        body: JSON.stringify(newTodo)
     })
     .then(res => res.json())
     .then(todo =>   dispatch({
         type: NEW_TODO,
-        todo
+        newTodo
     }))
 }
 

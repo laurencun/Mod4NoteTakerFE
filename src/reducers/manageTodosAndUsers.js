@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   todos: todosReducer,
   users: usersReducer,
   todoToEdit: todoToEditReducer,
-  todotoShow: todoToShowReducer
+  todoToShow: todoToShowReducer
 })
 
 export default rootReducer

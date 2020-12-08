@@ -6,6 +6,7 @@ const NEW_TODO = 'NEW_TODO'
 const DELETE_TODO = 'DELETE_TODO'
 const COMPLETE_TODO = 'COMPLETE_TODO'
 const UPDATED_TODO = 'UPDATED_TODO'
+const STAR_TODO = 'STAR_TODO'
 
 export const fetchTodos = () => dispatch =>  {
         fetch(TODOS_URL)
@@ -45,6 +46,7 @@ export const createTodo = (todo) => dispatch =>  {
 }
 
 export const deleteTodo = (id) => dispatch => {
+    console.log('action')
     fetch(`http://localhost:3000/todos/${id}`, {method: 'DELETE'})
     .then(res => res.json())
     .then((todo) =>  dispatch({
@@ -54,7 +56,6 @@ export const deleteTodo = (id) => dispatch => {
 }
 
 export const markComplete = (todo) => dispatch => {
-
     fetch(`http://localhost:3000/todos/${todo.id}`, {
         method: 'PATCH',
         headers: {
@@ -65,10 +66,51 @@ export const markComplete = (todo) => dispatch => {
         })
     })
     .then(res => res.json())
-    .then((updatedTodo) => dispatch({
+    .then((updatedTodo) => 
+        dispatch({
         type: COMPLETE_TODO,
         updatedTodo
     }))
+}
+
+export const markStarred = (todo) => dispatch => {
+    fetch(`http://localhost:3000/todos/${todo.id}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json'
+        }, 
+        body: JSON.stringify({
+            starred: true
+        })
+    })
+    .then(res => res.json())
+    .then((updatedTodo) => {
+        dispatch({
+            type: STAR_TODO,
+            updatedTodo
+        })
+    }
+    )
+}
+
+export const markUnstarred = (todo) => dispatch => {
+    fetch(`http://localhost:3000/todos/${todo.id}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json'
+        }, 
+        body: JSON.stringify({
+            starred: false
+        })
+    })
+    .then(res => res.json())
+    .then((updatedTodo) => {
+        dispatch({
+            type: STAR_TODO,
+            updatedTodo
+        })
+    }
+    )
 }
 
 export const updateTodo = (todo) => dispatch => {

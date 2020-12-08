@@ -8,7 +8,6 @@ export default function todosReducer(state= [], action) {
       case "NEW_TODO":
         return [...state, action.todo]
       case "DELETE_TODO":
-        console.log(action.todo.id)
         updatedTodos = state.filter(t => t.id !== action.todo.id)
         return updatedTodos
       case "COMPLETE_TODO":
@@ -20,6 +19,17 @@ export default function todosReducer(state= [], action) {
             return t
           }
         })
+        return updatedTodos
+      case "STAR_TODO":
+          updatedTodos = state.map(t => {
+          if(t.id === action.updatedTodo.id){
+            return action.updatedTodo
+          }
+          else{
+            return t
+          }
+        })
+        return updatedTodos
       case "UPDATED_TODO":
         updatedTodos = state.map(t => {
           if(t.id === action.updatedTodo.id){

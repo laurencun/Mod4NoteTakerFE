@@ -10,6 +10,7 @@ class TodoIndex extends Component {
     render() {
 
     const sortedTodos = this.props.todos.sort((a, b) => a.completed - b.completed)
+    const sortedByStarTodos = sortedTodos.sort((b, a) => a.starred - b.starred)
 
     // const findTodo = () => {
     //     getTodo(window.location.href.split('/')[3])
@@ -18,7 +19,7 @@ class TodoIndex extends Component {
     return (
         <div>
             {/* <ShowTodo todoToShow={this.findTodo}/> */}
-            {sortedTodos.map(todo => 
+            {sortedByStarTodos.map(todo => 
                 <Todo key={todo.id} todo={todo} />
             )}
         </div>

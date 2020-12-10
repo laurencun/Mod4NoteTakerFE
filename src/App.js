@@ -41,8 +41,8 @@ class App extends Component {
         <Route path='/todo/:id' component={ShowTodo} />
         <Route exact path='/' component={MainContainer}/>
       </Router>
-    </div>
-    </Provider>
+      </div>
+  </Provider>
   );
   }
 }

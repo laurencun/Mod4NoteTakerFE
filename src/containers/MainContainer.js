@@ -9,7 +9,12 @@ let toggle = true
 class MainContainer extends Component {
 
     componentDidMount() {
+        if(!this.props.auth){
+        this.props.history.push('/login')
+        }
+        else{
         this.props.fetchTodos()
+        }
     }
 
     showCompleted = () => {
@@ -38,7 +43,8 @@ class MainContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-    todos: state.todos
+    todos: state.todos,
+    auth: state.auth
 })
 
 export default connect(mapStateToProps, {fetchTodos, fetchCompleted})(MainContainer)

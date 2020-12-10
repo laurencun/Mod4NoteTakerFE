@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {currentUser} from '../actions/auth'
 import {fetchTodos, fetchCompleted} from '../actions/todoActions'
 import TodoIndex from '/Users/lauren/Flatiron/note-taker-fe/src/components/TodoIndex.js'
 import Button from '@material-ui/core/Button'
@@ -9,10 +10,23 @@ let toggle = true
 class MainContainer extends Component {
 
     componentDidMount() {
-        if(!this.props.auth){
+        const token = localStorage.getItem('my_app_token')
+        if(!token){
         this.props.history.push('/login')
         }
         else{
+            //get back user associated with token
+            const reqObj = {
+                method: 'GET', 
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            fetch('http://localhost:3000/current_user', reqObj)
+            .then(res => res.json())
+            .then((data) => {
+                this.props.currentUser(data.user)
+            })
         this.props.fetchTodos()
         }
     }
@@ -47,4 +61,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, {fetchTodos, fetchCompleted})(MainContainer)
+export default connect(mapStateToProps, {fetchTodos, fetchCompleted, currentUser})(MainContainer)

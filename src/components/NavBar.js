@@ -24,7 +24,7 @@ export default function NavBar() {
             
             <Typography variant="h4" color="textPrimary"><h3 onClick={pushToHome}>noteTaker</h3></Typography>
             <Link variant="h5" color="inherit" href="/new">New Note</Link>
-            <Link variant="h5" color="inherit" href="/login">Sign Out</Link>
+            <Link variant="h5" color="inherit" href="/login" onClick={() => localStorage.removeItem('my_app_token')}>Sign Out</Link>
     
             </Breadcrumbs>
             </nav>

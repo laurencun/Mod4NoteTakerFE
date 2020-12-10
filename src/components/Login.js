@@ -37,6 +37,7 @@ class Login extends Component {
             } else {
               this.props.login_success(data)
               this.props.history.push('/')
+              localStorage.setItem('my_app_token', data.token)
             }
           })
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Box } from '@material-ui/core';
 import {login_success} from '../actions/auth';
 import { connect } from 'react-redux';
+import API_ROOT from '../apiRoot.js'
 
 
 class Login extends Component {
@@ -27,7 +28,7 @@ class Login extends Component {
             body: JSON.stringify(this.state)
           }
       
-          fetch('http://localhost:3000/auth', reqObj)
+          fetch(`${API_ROOT}auth`, reqObj)
           .then(resp => resp.json())
           .then(data => {
             if (data.error) {

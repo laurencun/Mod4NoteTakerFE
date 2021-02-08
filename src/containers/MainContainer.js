@@ -4,6 +4,8 @@ import {currentUser} from '../actions/auth'
 import {fetchTodos, fetchCompleted} from '../actions/todoActions'
 import TodoIndex from '../components/TodoIndex.js'
 import Button from '@material-ui/core/Button'
+import API_ROOT from '../apiRoot.js'
+
 
 let toggle = true
 
@@ -22,7 +24,7 @@ class MainContainer extends Component {
                     Authorization: `Bearer ${token}`
                 }
             }
-            fetch('http://localhost:3000/current_user', reqObj)
+            fetch(`${API_ROOT}current_user`, reqObj)
             .then(res => res.json())
             .then((data) => {
                 this.props.currentUser(data.user)

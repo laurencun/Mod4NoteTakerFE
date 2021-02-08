@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {currentUser} from '../actions/auth'
 import {fetchTodos, fetchCompleted} from '../actions/todoActions'
-import TodoIndex from '/Users/lauren/Flatiron/note-taker-fe/src/components/TodoIndex.js'
+import TodoIndex from '../components/TodoIndex.js'
 import Button from '@material-ui/core/Button'
 
 let toggle = true

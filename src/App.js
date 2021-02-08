@@ -3,7 +3,6 @@ import './App.css';
 
 import Login from './components/Login';
 import TodoForm from './components/TodoForm';
-import TodoIndex from './components/TodoIndex';
 import ShowTodo from './components/ShowTodo';
 import EditTodoForm from './components/EditTodoForm';
 import NavBar from './components/NavBar';
@@ -36,7 +35,7 @@ class App extends Component {
       <Router>
         <NavBar />
         <Route exact path='/login' component={Login}/>
-        <Route path='todos' component={TodoIndex} />
+        {/* <Route path='/:id' component={Todo} /> */}
         <Route exact path='/new' component={TodoForm} />
         <Route path='/edit/:id' component={EditTodoForm} />
         <Route path='/todo/:id' component={ShowTodo} />

@@ -1,5 +1,5 @@
 import API_ROOT from '../apiRoot.js'
-const TODOS_URL = `${API_ROOT}/todos`
+const TODOS_URL = `${API_ROOT}todos`
 const FETCH_TODOS = 'FETCH_TODOS'
 const FETCH_COMPLETED = 'FETCH_COMPLETED'
 const NEW_TODO = 'NEW_TODO'

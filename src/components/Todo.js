@@ -67,14 +67,14 @@ const Todo = ({todo, deleteTodo, editTodo, markComplete, markStarred, markUnstar
                     {todo.completed === false ?
                 <div>
                 {todo.starred === true? 
-                <Button style={{margin:10}} variant="outlined" size='smaller' onClick={handleUnstar}><FilledStarIcon /></Button>
-                :<Button style={{margin:10}} variant="outlined" size='smaller' onClick={handleStar}><StarIcon /></Button>
+                <Button style={{margin:10}} variant="outlined" size='small' onClick={handleUnstar}><FilledStarIcon /></Button>
+                :<Button style={{margin:10}} variant="outlined" size='small' onClick={handleStar}><StarIcon /></Button>
                 }
-                <Button style={{margin:10}} variant="outlined" size='smaller' onClick={handleComplete}><DoneIcon /></Button>
-                <Button style={{margin:10}} variant="outlined" size='smaller' onClick={() => handleEdit(todo)}><EditIcon /></Button>
-                <Button style={{margin:10}} variant="outlined" size='smaller' onClick={handleDelete}><DeleteIcon /></Button>
+                <Button style={{margin:10}} variant="outlined" size='small' onClick={handleComplete}><DoneIcon /></Button>
+                <Button style={{margin:10}} variant="outlined" size='small' onClick={() => handleEdit(todo)}><EditIcon /></Button>
+                <Button style={{margin:10}} variant="outlined" size='small' onClick={handleDelete}><DeleteIcon /></Button>
                 </div>
-                :<Button style={{margin:10}} variant="outlined" size='smaller' onClick={handleDelete}><DeleteIcon /></Button>}
+                :<Button style={{margin:10}} variant="outlined" size='small' onClick={handleDelete}><DeleteIcon /></Button>}
                 </div>
                 : null}
           </Paper>

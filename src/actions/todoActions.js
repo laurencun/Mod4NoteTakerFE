@@ -1,5 +1,5 @@
 import API_ROOT from '../apiRoot.js'
-const TODOS_URL = `${API_ROOT}todos`
+const TODOS_URL = `${API_ROOT}/todos`
 const FETCH_TODOS = 'FETCH_TODOS'
 const FETCH_COMPLETED = 'FETCH_COMPLETED'
 const NEW_TODO = 'NEW_TODO'
@@ -31,7 +31,6 @@ export const fetchCompleted = () => dispatch =>  {
 }
 
 export const createTodo = (todo) => dispatch =>  {
-
     const newTodo = {
         title: todo.title,
         content: todo.content,
@@ -54,7 +53,8 @@ export const createTodo = (todo) => dispatch =>  {
 }
 
 export const deleteTodo = (id) => dispatch => {
-    fetch(`${API_ROOT}${id}`, {method: 'DELETE'})
+    console.log(id)
+    fetch(`${TODOS_URL}/${id}`, {method: 'DELETE'})
     .then(res => res.json())
     .then((todo) =>  dispatch({
         type: DELETE_TODO,
@@ -63,7 +63,8 @@ export const deleteTodo = (id) => dispatch => {
 }
 
 export const markComplete = (todo) => dispatch => {
-    fetch(`${API_ROOT}${todo.id}`, {
+    console.log(todo.id)
+    fetch(`${TODOS_URL}/${todo.id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'
@@ -81,7 +82,7 @@ export const markComplete = (todo) => dispatch => {
 }
 
 export const markStarred = (todo) => dispatch => {
-    fetch(`${API_ROOT}${todo.id}`, {
+    fetch(`${TODOS_URL}/${todo.id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'
@@ -101,7 +102,7 @@ export const markStarred = (todo) => dispatch => {
 }
 
 export const markUnstarred = (todo) => dispatch => {
-    fetch(`${API_ROOT}${todo.id}`, {
+    fetch(`${TODOS_URL}/${todo.id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'
@@ -122,7 +123,7 @@ export const markUnstarred = (todo) => dispatch => {
 
 export const updateTodo = (todo) => dispatch => {
 
-    fetch(`${API_ROOT}${todo.id}`, {
+    fetch(`${TODOS_URL}/${todo.id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'

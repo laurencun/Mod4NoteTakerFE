@@ -22,7 +22,7 @@ export default function NavBar() {
             <nav style={{ width:'100%', height:'10vh', backgroundImage:`url(${Background})`}}>
             <Breadcrumbs aria-label="breadcrumb">
             
-            <Typography variant="h4" color="textPrimary"><h3 onClick={pushToHome}>noteTaker</h3></Typography>
+            <Typography variant="h3" color="textPrimary"><p onClick={pushToHome}>noteTaker</p></Typography>
             <Link variant="h5" color="inherit" href="/new">New Note</Link>
             <Link variant="h5" color="inherit" href="/login" onClick={() => localStorage.removeItem('my_app_token')}>Sign Out</Link>
     

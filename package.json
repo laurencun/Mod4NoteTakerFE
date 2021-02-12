@@ -2,6 +2,7 @@
   "name": "note-taker-fe",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "homepage": "https://ntkr.herokuapp.com/",
   "engines": {
     "node": "15.x",

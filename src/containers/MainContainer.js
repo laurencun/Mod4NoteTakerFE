@@ -24,7 +24,7 @@ class MainContainer extends Component {
                     Authorization: `Bearer ${token}`
                 }
             }
-            fetch(`${API_ROOT}current_user`, reqObj)
+            fetch(`${API_ROOT}/current_user`, reqObj)
             .then(res => res.json())
             .then((data) => {
                 this.props.currentUser(data.user)
@@ -48,8 +48,8 @@ class MainContainer extends Component {
         return (
             <div >
                 {toggle === true ?
-                <Button style={{margin:10}} variant="outlined" size='smaller' onClick={this.showCompleted}>Show Completed</Button>
-                :<Button style={{margin:10}} variant="outlined" size='smaller' onClick={this.showCompleted}>Show All</Button>
+                <Button style={{margin:10}} variant="outlined" size='small' onClick={this.showCompleted}>Show Completed</Button>
+                :<Button style={{margin:10}} variant="outlined" size='small' onClick={this.showCompleted}>Show All</Button>
                 }
                 <TodoIndex todos={this.props.todos} handleEdit={this.handleEdit}/>
             </div>

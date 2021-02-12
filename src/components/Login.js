@@ -28,7 +28,7 @@ class Login extends Component {
             body: JSON.stringify(this.state)
           }
       
-          fetch(`${API_ROOT}auth`, reqObj)
+          fetch(`${API_ROOT}/auth`, reqObj)
           .then(resp => resp.json())
           .then(data => {
             if (data.error) {

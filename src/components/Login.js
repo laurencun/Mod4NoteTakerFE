@@ -35,11 +35,14 @@ class Login extends Component {
               this.setState({
                 error: data.error
               })
-            } else {
-              this.props.login_success(data)
-              localStorage.setItem('my_app_token', data.token)
+            } else if (this.props.auth !== null){
               this.props.history.push('/')
             }
+            else{
+              this.props.login_success(data)
+              localStorage.setItem('my_app_token', data.token)
+            }
+            this.props.history.push('/')
           })
     }
 
@@ -53,7 +56,7 @@ class Login extends Component {
                 <h2>Welcome</h2>
                 <form >
                     <input style={{padding:5}} onChange={this.handleChange} name='username' type='text' placeholder="Username" value={this.state.username}/><br/>
-                    <input style={{padding:5}} onChange={this.handleChange} name='password' type='text' placeholder="Password" value={this.state.password}/><br/>
+                    <input style={{padding:5}} onChange={this.handleChange} name='password' type='password' placeholder="Password" value={this.state.password}/><br/>
                     <Button style={{margin:10}} variant="outlined" size='small' onClick={this.login}>Login</Button>
                 </form>
             </div>
@@ -67,4 +70,8 @@ const mapDispatchToProps = {
     login_success
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

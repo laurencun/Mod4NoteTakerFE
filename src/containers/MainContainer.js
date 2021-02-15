@@ -3,11 +3,13 @@ import {connect} from 'react-redux'
 import {currentUser} from '../actions/auth'
 import {fetchTodos, fetchCompleted} from '../actions/todoActions'
 import TodoIndex from '../components/TodoIndex.js'
+import TodoForm from '../components/TodoForm.js'
 import Button from '@material-ui/core/Button'
 import API_ROOT from '../apiRoot.js'
 
 
 let toggle = true
+let form = false
 
 class MainContainer extends Component {
 
@@ -43,14 +45,21 @@ class MainContainer extends Component {
         }
     }
 
+    showForm = () => {
+        form = !form
+        this.props.fetchTodos()
+    }
+
     render() {
 
         return (
             <div >
+                <Button style={{margin:10}} variant="outlined" size='small' onClick={this.showForm}>Create New Note</Button>
                 {toggle === true ?
                 <Button style={{margin:10}} variant="outlined" size='small' onClick={this.showCompleted}>Show Completed</Button>
                 :<Button style={{margin:10}} variant="outlined" size='small' onClick={this.showCompleted}>Show All</Button>
                 }
+                {form === true ? <TodoForm/> : null}
                 <TodoIndex todos={this.props.todos} handleEdit={this.handleEdit}/>
             </div>
         )

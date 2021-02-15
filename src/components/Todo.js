@@ -39,10 +39,6 @@ const Todo = ({todo, deleteTodo, editTodo, markComplete, markStarred, markUnstar
         editTodo(todo)
     }
 
-    const goToShowPage = (id) => {
-        history.push(`/todo/${id}`)
-    }
-
     const useStyles = makeStyles((theme) => ({
         root: {
           display: 'flex',
@@ -57,7 +53,7 @@ const Todo = ({todo, deleteTodo, editTodo, markComplete, markStarred, markUnstar
       function PaperStyled() {
           const classes = useStyles();
           return <Paper classname={classes.root}>
-                <h3 onClick={() => goToShowPage(todo.id)}>{todo.title}</h3>
+                <h3>{todo.title}</h3>
                 
                 <p style={{textDecoration: todo.completed ? 
                 'line-through' : 'none'}}>{todo.content}</p>

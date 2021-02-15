@@ -23,7 +23,6 @@ export default function NavBar() {
             <Breadcrumbs aria-label="breadcrumb">
             
             <Typography variant="h3" color="textPrimary"><p onClick={pushToHome}>noteTaker</p></Typography>
-            <Link variant="h5" color="inherit" href="/new">New Note</Link>
             <Link variant="h5" color="inherit" href="/login" onClick={() => localStorage.removeItem('my_app_token')}>Sign Out</Link>
     
             </Breadcrumbs>

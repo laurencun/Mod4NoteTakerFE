@@ -2,7 +2,6 @@ import {Component} from 'react'
 import './App.css';
 import Login from './components/Login';
 import TodoForm from './components/TodoForm';
-import ShowTodo from './components/ShowTodo';
 import EditTodoForm from './components/EditTodoForm';
 import NavBar from './components/NavBar';
 import MainContainer from './containers/MainContainer'
@@ -22,7 +21,6 @@ class App extends Component {
         {/* <Route path='/:id' component={Todo} /> */}
         <Route exact path='/new' component={TodoForm} />
         <Route path='/edit/:id' component={EditTodoForm} />
-        <Route path='/todo/:id' component={ShowTodo} />
         <Route exact path='/' component={MainContainer}/>
       </Router>
       </div>

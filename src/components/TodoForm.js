@@ -22,8 +22,6 @@ class TodoForm extends Component {
         const todo = {
             title: this.state.title,
             content: this.state.content,
-            completed: false,
-            user_id: null
         }
         this.setState({
             title: '',
@@ -31,7 +29,7 @@ class TodoForm extends Component {
         })
         this.props.createTodo(todo)
 
-        this.props.history.push('/')
+        // this.props.history.push('/')
     }
 
 
@@ -39,19 +37,18 @@ class TodoForm extends Component {
 
         return (
             <div style={{margin: '10vh'}}>
-            <Box component="form" style={{backgroundColor: '#E0AB78', border: "1px solid black"}}>
-                <form style={{padding:50, align: 'center'}}>
+            <Box component="form" style={{backgroundColor: '#E0AB78', border: "1px solid black", padding:50, align: 'center'}}>
                 <h2>Add Note</h2>
                     <label>Title</label><br/>
                     <input onChange={this.handleChange} type="text" name="title" value={this.state.title}/><br/><br/>
                     <label>Content</label><br/>
                     <input onChange={this.handleChange} type="textarea" name="content" value={this.state.content}/><br/>
                     <br/><button onClick={this.handleSubmit}><Add /></button>
-                </form>
             </Box>
             </div>
         )
     }
 }
+
 
 export default connect(null, {createTodo})(TodoForm)

@@ -19,8 +19,9 @@ class Login extends Component {
         })
     }
 
-    login = () => {
-        const reqObj = {
+    login = (e) => {
+      e.preventDefault()  
+      const reqObj = {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -35,9 +36,10 @@ class Login extends Component {
               this.setState({
                 error: data.error
               })
-            } else if (this.props.auth !== null){
-              this.props.history.push('/')
-            }
+            } 
+            // else if (this.props.auth !== null){
+            //   this.props.history.push('/')
+            // }
             else{
               this.props.login_success(data)
               localStorage.setItem('my_app_token', data.token)

@@ -37,9 +37,6 @@ class Login extends Component {
                 error: data.error
               })
             } 
-            // else if (this.props.auth !== null){
-            //   this.props.history.push('/')
-            // }
             else{
               this.props.login_success(data)
               localStorage.setItem('my_app_token', data.token)

@@ -1,5 +1,4 @@
 import API_ROOT from '../apiRoot.js'
-import uuid from 'react-uuid'
 const TODOS_URL = `${API_ROOT}/todos`
 const FETCH_TODOS = 'FETCH_TODOS'
 const FETCH_COMPLETED = 'FETCH_COMPLETED'
@@ -34,7 +33,6 @@ export const fetchCompleted = () => dispatch =>  {
 export const createTodo = (todo) => dispatch =>  {
 
     const newTodo = {
-        id: uuid,
         title: todo.title,
         content: todo.content,
         completed: false,

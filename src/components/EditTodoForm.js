@@ -10,19 +10,9 @@ class EditTodoForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            id: '',
-            title: '',
-            content: ''
-        }
-    }
-
-    componentDidUpdate(prevProps, prevState){
-        if (this.props.todoToEdit && prevState.title === '') {
-            this.setState({
-                id: this.props.todoToEdit.id,
-                title: this.props.todoToEdit.title,
-                content: this.props.todoToEdit.content
-            })
+            id: this.props.todoToEdit.id,
+            title: this.props.todoToEdit.title,
+            content: this.props.todoToEdit.content
         }
     }
 

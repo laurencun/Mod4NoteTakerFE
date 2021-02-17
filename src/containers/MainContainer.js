@@ -30,24 +30,24 @@ class MainContainer extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.props.currentUser(data.user)
+                this.props.fetchTodos(data.user.id)
             })
-        this.props.fetchTodos()
         }
     }
 
     showCompleted = () => {
         toggle = !toggle
         if (toggle === false){
-        this.props.fetchCompleted()
+          this.props.fetchCompleted(this.props.auth.id)
         }
         else {
-            this.props.fetchTodos()
+            this.props.fetchTodos(this.props.auth.id)
         }
     }
 
     showForm = () => {
         form = !form
-        this.props.fetchTodos()
+        this.props.fetchTodos(this.props.auth.id)
     }
 
     render() {

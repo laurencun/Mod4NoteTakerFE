@@ -8,24 +8,24 @@ const COMPLETE_TODO = 'COMPLETE_TODO'
 const UPDATED_TODO = 'UPDATED_TODO'
 const STAR_TODO = 'STAR_TODO'
 
-export const fetchTodos = () => dispatch =>  {
+export const fetchTodos = (id) => dispatch =>  {
         fetch(TODOS_URL)
         .then(res => res.json())
         .then(todos => 
             dispatch({
             type: FETCH_TODOS,
-            todos
+            todos: todos.filter(t => t.user_id === id)
         })
     )
 }
 
-export const fetchCompleted = () => dispatch =>  {
+export const fetchCompleted = (id) => dispatch =>  {
     fetch(TODOS_URL)
     .then(res => res.json())
     .then(todos =>
         dispatch({
         type: FETCH_COMPLETED,
-        todos: todos.filter(t => t.completed === true)
+        todos: todos.filter(t => t.user_id === id && t.completed === true)
     })
 )
 }

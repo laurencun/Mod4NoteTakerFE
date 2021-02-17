@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Box } from '@material-ui/core';
 import {login_success} from '../actions/auth';
+import {createUser} from '../actions/userAction';
 import { connect } from 'react-redux';
 import API_ROOT from '../apiRoot.js'
 
@@ -45,6 +46,15 @@ class Login extends Component {
           })
     }
 
+    newUser = (e) => {
+      const user = {
+        username: this.state.username,
+        password: this.state.password
+      }
+      this.props.createUser(user)
+      this.login(e)
+    } 
+
     render() {
 
         return (
@@ -57,6 +67,7 @@ class Login extends Component {
                     <input style={{padding:5}} onChange={this.handleChange} name='username' type='text' placeholder="Username" value={this.state.username}/><br/>
                     <input style={{padding:5}} onChange={this.handleChange} name='password' type='password' placeholder="Password" value={this.state.password}/><br/>
                     <Button style={{margin:10}} variant="outlined" size='small' onClick={this.login}>Login</Button>
+                    <Button style={{margin:10}} variant="outlined" size='small' onClick={this.newUser}>Create Account</Button>
                 </form>
             </div>
             </Box>
@@ -66,7 +77,8 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = {
-    login_success
+    login_success,
+    createUser
 }
 
 const mapStateToProps = state => ({

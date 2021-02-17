@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {createTodo} from '../actions/todoActions'
+import uuid from 'react-uuid'
 import Add from '@material-ui/icons/Add'
 import Box from '@material-ui/core/Box';
 
@@ -20,8 +21,12 @@ class TodoForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         const todo = {
+            id: uuid,
             title: this.state.title,
             content: this.state.content,
+            completed: false,
+            starred: false,
+            user_id: this.props.auth.id
         }
         this.setState({
             title: '',
@@ -50,5 +55,8 @@ class TodoForm extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    auth: state.auth
+})
 
-export default connect(null, {createTodo})(TodoForm)
+export default connect(mapStateToProps, {createTodo})(TodoForm)

@@ -22,7 +22,6 @@ class Login extends Component {
 
     login = (e) => {
       e.preventDefault()  
-      console.log(this.state)
       const reqObj = {
             method: 'POST',
             headers: {
@@ -67,7 +66,7 @@ class Login extends Component {
                     <input style={{padding:5}} onChange={this.handleChange} name='username' type='text' placeholder="Username" value={this.state.username}/><br/>
                     <input style={{padding:5}} onChange={this.handleChange} name='password' type='password' placeholder="Password" value={this.state.password}/><br/>
                     <Button style={{margin:10}} variant="outlined" size='small' onClick={this.login}>Login</Button>
-                    <Button style={{margin:10}} variant="outlined" size='small' onClick={this.newUser().then(this.login(e))}>Create Account</Button>
+                    <Button style={{margin:10}} variant="outlined" size='small' onClick={this.newUser.then(function(){this.login(e)})}>Create Account</Button>
                 </form>
             </div>
             </Box>

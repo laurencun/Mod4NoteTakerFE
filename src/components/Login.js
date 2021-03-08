@@ -51,7 +51,8 @@ class Login extends Component {
         username: this.state.username,
         password: this.state.password
       }
-      this.props.createUser(user).then(this.login(e))
+      this.props.createUser(user)
+      this.login(e)
     } 
 
     render() {

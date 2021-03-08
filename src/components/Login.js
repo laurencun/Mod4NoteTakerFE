@@ -52,7 +52,7 @@ class Login extends Component {
         password: this.state.password
       }
       this.props.createUser(user)
-      callback()
+      callback(e)
     } 
 
     render() {
@@ -67,7 +67,7 @@ class Login extends Component {
                     <input style={{padding:5}} onChange={this.handleChange} name='username' type='text' placeholder="Username" value={this.state.username}/><br/>
                     <input style={{padding:5}} onChange={this.handleChange} name='password' type='password' placeholder="Password" value={this.state.password}/><br/>
                     <Button style={{margin:10}} variant="outlined" size='small' onClick={this.login}>Login</Button>
-                    <Button style={{margin:10}} variant="outlined" size='small' onClick={() => this.newUser(this.login)}>Create Account</Button>
+                    <Button style={{margin:10}} variant="outlined" size='small' onClick={(e) => this.newUser(this.login(e))}>Create Account</Button>
                 </form>
             </div>
             </Box>

@@ -22,6 +22,7 @@ class Login extends Component {
 
     login = (e) => {
       e.preventDefault()  
+      cosole.log(this.state)
       const reqObj = {
             method: 'POST',
             headers: {

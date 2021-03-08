@@ -10,7 +10,7 @@ export const createUser = (user) => dispatch =>  {
         },
         body: JSON.stringify(user)
     })
-    .then(res => res.json())
+    // .then(res => res.json())
     .then(user => dispatch({
         type: NEW_USER,
         user

@@ -22,7 +22,7 @@ class Login extends Component {
 
     login = (e) => {
       e.preventDefault()  
-      cosole.log(this.state)
+      console.log(this.state)
       const reqObj = {
             method: 'POST',
             headers: {

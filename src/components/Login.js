@@ -53,7 +53,7 @@ class Login extends Component {
         password: this.state.password
       }
       this.props.createUser(user)
-      this.login(e)
+      // this.login(e)
     } 
 
     render() {

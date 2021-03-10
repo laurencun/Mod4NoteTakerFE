@@ -40,7 +40,7 @@ export const createTodo = (todo) => dispatch =>  {
         body: JSON.stringify(todo)
     })
     .then(res => res.json())
-    .then(todo =>   dispatch({
+    .then(todo =>  dispatch({
         type: NEW_TODO,
         todo
     }))

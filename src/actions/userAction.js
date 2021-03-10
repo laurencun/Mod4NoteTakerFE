@@ -3,15 +3,15 @@ const USER_URL = `${API_ROOT}/users`
 const NEW_USER = 'NEW_USER'
 
 export const createUser = (user) => dispatch =>  {
-    fetch(USER_URL,{
-        method: 'POST',
+    const reqObj =       
+        {method: 'POST',
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify(user)
-    })
+        body: JSON.stringify(user)}
+    fetch(USER_URL, reqObj)
     .then(res => res.json())
-    .then(user =>   dispatch({
+    .then(user =>  dispatch({
         type: NEW_USER,
         user
     }))
